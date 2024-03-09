@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <title>Paper</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="./style.css">
-
-</head>
-<style>
+  <style>
     .paper {
       position: relative;
     }
@@ -85,15 +82,37 @@
         opacity: 0.5;
         top: 1px;
       }
-    }</style>
+    }
+
+    .text {
+      background: linear-gradient(143deg, #000000 39%, #ffffff 40%), /*...다른 선형 그라디언트들...*/ linear-gradient(109deg, #000000 32%, #ffffff 52%), linear-gradient(129deg, #000000 67%, #ffffff 84%), linear-gradient(156deg, #000000 82%, #ffffff 98%);
+      background-blend-mode: difference;
+      display: inline-block;
+      filter: invert(1);
+      opacity: 0.5;
+      padding: 1rem;
+      position: relative;
+    }
+
+    .text::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.8);
+      mix-blend-mode: overlay;
+      z-index: -1;
+    }
+  </style>
+</head>
 <body>
-<!-- partial:index.partial.html -->
 <div class="paper">
     <div class="color-overlay">
-        <div class="text">asdfasdfasdfasdfasdfasd</div>
+        <div class="text">여기에 텍스트 입력</div>
     </div>
 </div>
-<!-- partial -->
-  
 </body>
 </html>
