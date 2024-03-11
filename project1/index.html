@@ -74,7 +74,7 @@
   }
 }
 
-@media (min-width: 1001px) {
+@media (min-width: 1001px) and (max-width: 1079px) {
   .paper::after {
     filter: invert(1);
     opacity: 0.5;
@@ -83,6 +83,18 @@
 
   :root {
     --displacement-scale: 5;
+  }
+}
+
+@media (min-width: 1080px) {
+  .paper::after {
+    filter: invert(1);
+    opacity: 0.5;
+    top: 1px;
+  }
+
+  :root {
+    --displacement-scale: 0;
   }
 }
   </style>
