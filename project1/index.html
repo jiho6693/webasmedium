@@ -5,9 +5,6 @@
   <title>Paper</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <style>
-    :root {
-      --displacement-scale: 5; /* Default scale value */
-    }
 
     .text {
       white-space: pre-line;
@@ -16,7 +13,7 @@
       margin-right: 3%;
       margin-top: 3%;
       font-size: 1.5vw;
-      filter: url(#distort);
+      filter: url(#distort); /* 필터 적용 */
     }
 
     .paper {
@@ -108,4 +105,18 @@
   </div>
   
   </body>
+  <script>
+    function updateFilterScale() {
+      var scaleValue = getComputedStyle(document.documentElement)
+                       .getPropertyValue('--displacement-scale').trim();
+      var filter = document.querySelector('#distort feDisplacementMap');
+      filter.setAttribute('scale', scaleValue);
+    }
+  
+    // 페이지 로드 시 필터 업데이트
+    document.addEventListener('DOMContentLoaded', updateFilterScale);
+  
+    // 창 크기가 변경될 때 필터 업데이트
+    window.addEventListener('resize', updateFilterScale);
+  </script>
   </html>
