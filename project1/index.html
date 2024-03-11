@@ -1,16 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Paper</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="./style.css">
+  <style>
+    :root {
+      --displacement-scale: 5; /* Default scale value */
+    }
 
-</head>
-<style>
+    .text {
+      white-space: pre-line;
+      text-align: left;
+      margin-left: 3%;
+      margin-right: 3%;
+      margin-top: 3%;
+      font-size: 1.5vw;
+      filter: url(#distort);
+    }
+
     .paper {
       position: relative;
     }
+
     .paper::before, .paper::after {
       background: linear-gradient(143deg, #000000 39%, #ffffff 40%), linear-gradient(113deg, #000000 25%, #ffffff 26%), linear-gradient(41deg, #000000 35%, #ffffff 36%), linear-gradient(31deg, #000000 28%, #ffffff 40%), linear-gradient(146deg, #000000 32%, #ffffff 51%), linear-gradient(142deg, #000000 11%, #ffffff 14%), linear-gradient(91deg, #000000 54%, #ffffff 59%), linear-gradient(36deg, #000000 23%, #ffffff 40%), linear-gradient(101deg, #000000 55%, #ffffff 66%), linear-gradient(175deg, #000000 99%, #ffffff 119%), linear-gradient(63deg, #000000 62%, #ffffff 70%), linear-gradient(59deg, #000000 71%, #ffffff 75%), linear-gradient(134deg, #000000 73%, #ffffff 83%), linear-gradient(94deg, #000000 21%, #ffffff 40%), linear-gradient(71deg, #000000 84%, #ffffff 88%), linear-gradient(159deg, #000000 55%, #ffffff 62%), linear-gradient(62deg, #000000 39%, #ffffff 55%), linear-gradient(84deg, #000000 24%, #ffffff 40%), linear-gradient(163deg, #000000 1%, #ffffff 5%), linear-gradient(163deg, #000000 34%, #ffffff 51%), linear-gradient(89deg, #000000 20%, #ffffff 27%), linear-gradient(42deg, #000000 26%, #ffffff 40%), linear-gradient(100deg, #000000 73%, #ffffff 75%), linear-gradient(94deg, #000000 88%, #ffffff 99%), linear-gradient(162deg, #000000 67%, #ffffff 70%), linear-gradient(162deg, #000000 72%, #ffffff 85%), linear-gradient(40deg, #000000 27%, #ffffff 35%), linear-gradient(108deg, #000000 83%, #ffffff 92%), linear-gradient(96deg, #000000 66%, #ffffff 77%), linear-gradient(33deg, #000000 56%, #ffffff 65%), linear-gradient(76deg, #000000 10%, #ffffff 24%), linear-gradient(155deg, #000000 9%, #ffffff 14%), linear-gradient(134deg, #000000 79%, #ffffff 98%), linear-gradient(122deg, #000000 95%, #ffffff 98%), linear-gradient(48deg, #000000 60%, #ffffff 62%), linear-gradient(91deg, #000000 82%, #ffffff 99%), linear-gradient(109deg, #000000 32%, #ffffff 52%), linear-gradient(129deg, #000000 67%, #ffffff 84%), linear-gradient(156deg, #000000 82%, #ffffff 98%);
       background-blend-mode: difference;
@@ -22,12 +34,7 @@
       bottom: 0;
       left: 0;
     }
-    /* .paper::after {
-      filter: invert(1);
-      opacity: 0.5;
-      top: 1px;
-    } */
-    
+
     .color-overlay {
       background: rgba(255, 255, 255, 0.8);
       mix-blend-mode: overlay;
@@ -38,62 +45,67 @@
       right: 0;
       z-index: 1;
     }
-    
+
     .paper {
       line-height: 1.5;
-      min-height: 100vh;
+      min-height: 200vh;
       padding: 2rem;
       text-align: center;
     }
-    
-    
-    
-    @media (min-width: 30px) and (max-width: 400px) {
-      .paper::after {
-        filter: invert(1);
-        opacity: 0.3;
-        top: 1px;
-      }
-    }
-    
-    @media (min-width: 400px) and (max-width: 600px) {
-      .paper::after {
-        filter: invert(1);
-        opacity: 0.35;
-        top: 1px;
-      }
-    }
-    @media (min-width: 600px) and (max-width: 800px) {
-      .paper::after {
-        filter: invert(1);
-        opacity: 0.4;
-        top: 1px;
-      }
-    }
-    
-    @media (min-width: 800px) and (max-width: 1000px) {
-      .paper::after {
-        filter: invert(1);
-        opacity: 0.45;
-        top: 1px;
-      }
-    }
-    
-    @media (min-width: 1000px) {
-      .paper::after {
-        filter: invert(1);
-        opacity: 0.5;
-        top: 1px;
-      }
-    }</style>
+
+    @media (min-width: 400px) and (max-width: 800px) {
+  .paper::after {
+    filter: invert(1);
+    opacity: 0.3;
+    top: 1px;
+  }
+
+  :root {
+    --displacement-scale: 30;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1000px) {
+  .paper::after {
+    filter: invert(1);
+    opacity: 0.4;
+    top: 1px;
+  }
+
+  :root {
+    --displacement-scale: 15;
+  }
+}
+
+@media (min-width: 1001px) {
+  .paper::after {
+    filter: invert(1);
+    opacity: 0.5;
+    top: 1px;
+  }
+
+  :root {
+    --displacement-scale: 5;
+  }
+}
+  </style>
+</head>
 <body>
-<!-- partial:index.partial.html -->
-<div class="paper">
+  <div class="paper">
+    <svg>
+      <defs>
+        <filter id="distort" x="0" y="0" width="100%" height="100%">
+          <feTurbulence baseFrequency="0.01 0.01" numOctaves="1" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="var(--displacement-scale)" xChannelSelector="R" yChannelSelector="R"/>
+        </filter>
+      </defs>
+    </svg>
     <div class="color-overlay">
-        <div class="text">asdfasdfasdfasdfasdfasd</div>
+      <div class="text">Physical works desire a digital body.
+        The forms of art are diverse, ranging from traditional media such as painting, drawing, and sculpture, to forms like prints, photographs, videos, web-based works, data, installations, or architectural structures. Art can even exist in forms that are not physical, such as performances, language, or thoughts. Depending on the form a work takes, some persist indefinitely, while others exist only briefly for a few individuals. Some may exist momentarily but continue to exist as they circulate through people's mouths, sometimes transforming into different forms of existence.
+      </div>
     </div>
-</div>
-<!-- partial -->
+  </div>
   
-</body>
-</html>
+  </body>
+  </html>
