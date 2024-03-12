@@ -16,10 +16,18 @@
 				display: block;
 			}
 
+			.arrow img{
+      position:fixed;
+      top:2%;
+      right:2%;
+      opacity: 0.8;
+      width:15%;
+    }
 			
 		</style>
 	</head>
 	<body ontouchstart="">
+		<div class="arrow"><a href="index1.html"><img src="image/ar3.png"></a></div>
 		<script type="module">
 
 			import * as THREE from './js/three.module.js';
@@ -45,13 +53,7 @@
 
 			} );
 
-			let button = document.createElement( 'a' );
-			button.href = 'index.html';
-			button.style.cssText = 'position: absolute; bottom: 50%; right: 50%;  color: #fff; text-decoration: none; font-size: 200%;';
 		
-			button.textContent = 'd';
-			document.body.appendChild( button );
-
 		</script>
 	</body>
 </html>
