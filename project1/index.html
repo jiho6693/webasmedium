@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Paper</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <script src="script.js"></script>
   <style>
 
     .text {
@@ -14,6 +15,16 @@
       margin-top: 1%;
       font-size: 1.2vw;
       filter: url(#distort); /* 필터 적용 */
+    }
+
+    .title{
+      font-size:1.5vw;
+      text-align: center;
+    }
+
+    .sub{
+  
+      text-align: center;
     }
 
     .image{
@@ -53,22 +64,12 @@
 
     .paper {
       line-height: 1.5;
-      min-height: 200vh;
+      min-height: 350vh;
       padding: 2rem;
       text-align: center;
     }
 
-    /* @media (min-width: 400px) and (max-width: 800px) {
-  .paper::after {
-    filter: invert(1);
-    opacity: 0.3;
-    top: 1px;
-  }
 
-  :root {
-    --displacement-scale: 30;
-  }
-} */
 @media (min-width: 101px) and (max-width: 400px) {
   .paper::after {
     filter: invert(1);
@@ -131,62 +132,22 @@
     </svg>
     <div class="color-overlay">
       <div class="text">
-        Move or Die
+        <div class="title">Move or Die</div>        2. Digital Space
 
-        Physical works desire a digital body.
-
-        The forms of art are diverse, ranging from traditional media such as painting, drawing, and sculpture, to forms like prints, photographs, videos, web-based works, data, installations, or architectural structures. Art can even exist in forms that are not physical, such as performances, language, or thoughts. Depending on the form a work takes, some persist indefinitely, while others exist only briefly for a few individuals. Some may exist momentarily but continue to exist as they circulate through people's mouths, sometimes transforming into different forms of existence.
+        Digital space is a virtual environment where digital systems, networks, servers, databases, etc. However, it is based on real physical structures(Figure 2) such as servers, data centers, and internet infrastructure. This physical structure supports and operates digital services and environments. Similar to purchasing real space in cubic meters or square feet, one should purchase digital space in bytes. Digital space prices are generally more affordable than acquiring or maintaining physical space. However, digital space has its limitations and is not infinitely abundant. What forms do works take in digital spaces? And what values and systems are involved in that process?
         <br>
-        <div class="image"><img src="image/1.png"></div>
-     
+        <div class="image"><img src="image/1.png"></div><div class="sub">(Figure2 - Google date center)</div>
+
+        Digital Body - Compression Format
+
+Physical artworks are digitized to enter the digital space. Digitization refers to the process of converting artworks into a format usable on computers or digital devices. To digitize, artworks are photographed or scanned with high-resolution cameras, converting them into digital images. These digital images are then transformed into data using binary code, consisting of 0s and 1s, so that computers can understand them. This data is stored in a specific file format for compatibility with systems. Representative formats include mp4 for videos and jpeg for images. The format of an image file is associated with its size. Due to the high capacity of digital images, digital files are often compressed, and compression methods can be categorized as lossless or lossy.
+
+The reason I am interested in image compression methods is that they align with the values of past growth strategies in Korea. In particular, the method of lossy compression prioritizes efficiency, aiming to represent images in high quality while reducing file size. In other words, it aims to efficiently represent and manage elements within limited resources and space, similar to past approaches in Korea.
+
+A prominent format for lossy compression is JPEG. Joint Photographic Experts Group (JPEG) was invented in 1986 and is widely used as a standard algorithm for digital image compression and encoding. It allows high-quality images to be stored in relatively small file sizes. JPEG compression involves color transformation, sampling, quantization, Discrete Cosine Transform (DCT), and Huffman encoding. Through DCT, the program transforms images into the frequency domain using numerous 8x8 matrices (Figure 1). This DCT transformation compresses and represents the image data. JPEG is effective for photo and graphic image processing, particularly for easily sharing and storing images on the web. It boasts compatibility with existing systems and provides smooth support in standardized environments.
       </div>
     </div>
   </div>
-  
   </body>
-  <script>
-    function updateFilterScale() {
-      var scaleValue = getComputedStyle(document.documentElement)
-                       .getPropertyValue('--displacement-scale').trim();
-      var filter = document.querySelector('#distort feDisplacementMap');
-      filter.setAttribute('scale', scaleValue);
-    }
   
-    // 페이지 로드 시 필터 업데이트
-    document.addEventListener('DOMContentLoaded', updateFilterScale);
-  
-    // 창 크기가 변경될 때 필터 업데이트
-    window.addEventListener('resize', updateFilterScale);
-  </script>
-  <script type="module">
-
-	import * as THREE from './js/three.module.js';
-	import { APP } from './js/app.js';
-
-	window.THREE = THREE; // Used by APP Scripts.
-
-	var player = new APP.Player();
-	document.body.appendChild(player.dom);
-
-	function checkWindowSize() {
-		var width = window.innerWidth;
-		if (width <= 400) {
-			// 윈도우 크기가 320px 이하일 때만 로드 및 실행
-			var loader = new THREE.FileLoader();
-			loader.load('app.json', function (text) {
-				player.load(JSON.parse(text));
-				player.setSize(width, window.innerHeight);
-				player.play();
-			});
-		} else {
-			// 크기가 320px 이상일 경우, 애플리케이션 중지 및 숨김
-			player.stop();
-			player.dom.style.display = 'none';
-		}
-	}
-
-	// 초기 로드 및 윈도우 크기 변경 시 함수 호출
-	checkWindowSize();
-	window.addEventListener('resize', checkWindowSize);
-  </script>
   </html>
