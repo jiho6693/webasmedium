@@ -27,7 +27,7 @@
         // 윈도우 크기 변경 시 실행되는 함수
         function checkWindowSize() {
             var width = window.innerWidth;
-            if (width <= 900) {
+            if (width >= 0) {
                 // 윈도우 크기가 900px 이하인 경우
                 var loader = new THREE.FileLoader(); // 파일 로더 생성
                 loader.load('app.json', function (text) {

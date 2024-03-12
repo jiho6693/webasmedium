@@ -4,8 +4,22 @@
   <meta charset="UTF-8">
   <title>Crumpled Paper</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <script type="text/javascript">
+    var UserAgent = navigator.userAgent;
+    if (UserAgent.match(/iPhone|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null) { location.href = "index_mb.html"; /* 모바일 홈페이지 경로 */ }
+  </script>
   <script src="script.js"></script>
   <style>
+
+    body{
+      -ms-overflow-style: none;
+      overscroll-behavior: none;
+    }
+
+    ::-webkit-scrollbar {
+  display: none;
+}
+
 
     .text {
       white-space: pre-line;
@@ -31,10 +45,10 @@
 
     .arrow img{
       position:fixed;
-      top:0%;
-      right:-2%;
+      top:-0.5%;
+      right:-2.5%;
       opacity: 0.8;
-      width:1.5%;
+      width:3.5%;
     }
 
     .arrow2 img{
@@ -151,8 +165,8 @@
     </svg>
     <div class="color-overlay">
       <div class="text">
-        <div class="arrow"><img src="image/ar.png"></div><div class="arrow2"><img src="image/ar2.png">
-        </div> <div class="title">Move or Die</div>        2. Digital Space
+        <div class="arrow"><img src="image/ar3.png"></div>
+         <div class="title">Move or Die</div>        2. Digital Space
 
         Digital space is a virtual environment where digital systems, networks, servers, databases, etc. However, it is based on real physical structures(Figure 2) such as servers, data centers, and internet infrastructure. This physical structure supports and operates digital services and environments. Similar to purchasing real space in cubic meters or square feet, one should purchase digital space in bytes. Digital space prices are generally more affordable than acquiring or maintaining physical space. However, digital space has its limitations and is not infinitely abundant. What forms do works take in digital spaces? And what values and systems are involved in that process?
         <br>
