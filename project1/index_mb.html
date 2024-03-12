@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+	<script type="text/javascript">
+		var UserAgent = navigator.userAgent;
+		if (!(UserAgent.match(/iPhone|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null)) {
+		  // 모바일 기기가 아닌 경우 index.html로 리디렉션
+		  location.href = "index.html";
+		}
+	  </script>
     <style>
         body {
             font-family: sans-serif;
