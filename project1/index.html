@@ -11,10 +11,18 @@
       text-align: left;
       margin-left: 3%;
       margin-right: 3%;
-      margin-top: 3%;
-      font-size: 1.5vw;
+      margin-top: 1%;
+      font-size: 1.2vw;
       filter: url(#distort); /* 필터 적용 */
     }
+
+    .image{
+      text-align: center;
+    }
+
+    .image img{
+  width:90%;
+}
 
     .paper {
       position: relative;
@@ -50,7 +58,7 @@
       text-align: center;
     }
 
-    @media (min-width: 400px) and (max-width: 800px) {
+    /* @media (min-width: 400px) and (max-width: 800px) {
   .paper::after {
     filter: invert(1);
     opacity: 0.3;
@@ -60,41 +68,53 @@
   :root {
     --displacement-scale: 30;
   }
-}
-
-@media (min-width: 801px) and (max-width: 1000px) {
+} */
+@media (min-width: 101px) and (max-width: 400px) {
   .paper::after {
     filter: invert(1);
-    opacity: 0.4;
+    opacity: 0.9;
     top: 1px;
   }
 
   :root {
-    --displacement-scale: 15;
+    --displacement-scale: 70;
   }
 }
 
-@media (min-width: 1001px) and (max-width: 1079px) {
+
+@media (min-width: 401px) and (max-width: 700px) {
   .paper::after {
     filter: invert(1);
-    opacity: 0.5;
+    opacity: 0.28;
     top: 1px;
   }
 
   :root {
-    --displacement-scale: 5;
+    --displacement-scale: 40;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1079px) {
+  .paper::after {
+    filter: invert(1);
+    opacity: 0.38;
+    top: 1px;
+  }
+
+  :root {
+    --displacement-scale: 20;
   }
 }
 
 @media (min-width: 1080px) {
   .paper::after {
     filter: invert(1);
-    opacity: 0.5;
+    opacity: 0.48;
     top: 1px;
   }
 
   :root {
-    --displacement-scale: 0;
+    --displacement-scale: 5;
   }
 }
   </style>
@@ -110,8 +130,15 @@
       </defs>
     </svg>
     <div class="color-overlay">
-      <div class="text">Physical works desire a digital body.
+      <div class="text">
+        Move or Die
+
+        Physical works desire a digital body.
+
         The forms of art are diverse, ranging from traditional media such as painting, drawing, and sculpture, to forms like prints, photographs, videos, web-based works, data, installations, or architectural structures. Art can even exist in forms that are not physical, such as performances, language, or thoughts. Depending on the form a work takes, some persist indefinitely, while others exist only briefly for a few individuals. Some may exist momentarily but continue to exist as they circulate through people's mouths, sometimes transforming into different forms of existence.
+        <br>
+        <div class="image"><img src="image/1.png"></div>
+     
       </div>
     </div>
   </div>
@@ -130,5 +157,36 @@
   
     // 창 크기가 변경될 때 필터 업데이트
     window.addEventListener('resize', updateFilterScale);
+  </script>
+  <script type="module">
+
+	import * as THREE from './js/three.module.js';
+	import { APP } from './js/app.js';
+
+	window.THREE = THREE; // Used by APP Scripts.
+
+	var player = new APP.Player();
+	document.body.appendChild(player.dom);
+
+	function checkWindowSize() {
+		var width = window.innerWidth;
+		if (width <= 400) {
+			// 윈도우 크기가 320px 이하일 때만 로드 및 실행
+			var loader = new THREE.FileLoader();
+			loader.load('app.json', function (text) {
+				player.load(JSON.parse(text));
+				player.setSize(width, window.innerHeight);
+				player.play();
+			});
+		} else {
+			// 크기가 320px 이상일 경우, 애플리케이션 중지 및 숨김
+			player.stop();
+			player.dom.style.display = 'none';
+		}
+	}
+
+	// 초기 로드 및 윈도우 크기 변경 시 함수 호출
+	checkWindowSize();
+	window.addEventListener('resize', checkWindowSize);
   </script>
   </html>
