@@ -92,7 +92,12 @@ body {
     display: block;
   }
 
-  a:link, a:visited {
+  .works a:link, a:visited, a:hover, a:active{
+    text-decoration: none;
+
+  }
+
+  .right a:link, a:visited {
     background-color: #ecf7fd;
     color: rgb(0, 0, 0);
     padding: 14px 25px;
@@ -101,7 +106,7 @@ body {
     display: inline-block;
   }
   
-  a:hover, a:active {
+  .right a:hover, a:active {
     background-color: rgb(116, 150, 255);
   }
 
