@@ -1,36 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Crumpled Paper</title>
-  <script type="text/javascript">
-    var UserAgent = navigator.userAgent;
-    if (!(UserAgent.match(/iPhone|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null)) {
-      // 모바일 기기가 아닌 경우 index.html로 리디렉션
-      location.href = "index.html";
-    }
-  </script>
-  <style>
-    body{
-      margin: 0 0 0 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+	<script type="text/javascript">
+		var UserAgent = navigator.userAgent;
+		if (!(UserAgent.match(/iPhone|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null)) {
+		  // 모바일 기기가 아닌 경우 index.html로 리디렉션
+		  location.href = "index.html";
+		}
+	  </script>
+    <style>
+        body {
+            font-family: sans-serif;
+            font-size: 11px;
+            background-color: #000;
+            margin: 0px;
+        }
 
-    .image{
-      margin: 0 0 0 0;
-    }
+        canvas {
+            display: block;
+        }
 
-    .image img{
-      width:100%;
-    }
-
-    
-  </style>
+        .arrow img {
+            position: fixed;
+            top: 2%;
+            right: 2%;
+            opacity: 0.8;
+            width: 15%;
+        }
+    </style>
 </head>
-<body>
-  <div class="image">
-    <img src="image/2.jpg">
- 
-  </div>
-  </body>
-  
-  </html>
+<body ontouchstart="">
+<script type="module">
+    import * as THREE from './js/three.module.js';
+    import { APP } from './js/app.js';
+
+    window.THREE = THREE; // Used by APP Scripts.
+
+    var loader = new THREE.FileLoader();
+    loader.load('app.json', function (text) {
+        var player = new APP.Player();
+        player.load(JSON.parse(text));
+        player.setSize(window.innerWidth, window.innerHeight);
+        player.play();
+
+        document.body.appendChild(player.dom);
+
+        window.addEventListener('resize', function () {
+            player.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // 클릭 이벤트 처리
+        document.body.addEventListener('click', function () {
+            window.location.href = 'index1.html';
+        });
+    });
+</script>
+</body>
+</html>

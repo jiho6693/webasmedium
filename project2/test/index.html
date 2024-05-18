@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Color Change</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    transition: background-color 0.5s, color 0.5s;
+    /* transition 속성은 변경될 때 부드럽게 전환됨을 보장합니다. */
+  }
+</style>
+</head>
+<body onload="changeColors()">
+<h1>Dynamic Color Change</h1>
+
+<script>
+function changeColors() {
+  var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16); // 랜덤 색상 생성
+  document.body.style.backgroundColor = randomColor; // 배경색 변경
+  document.body.style.color = randomColor; // 글자색 변경 (배경색과 동일하게 설정)
+}
+</script>
+</body>
+</html>

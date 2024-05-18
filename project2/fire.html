@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모닥불</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+    }
+    canvas {
+        display: block;
+    }
+</style>
+</head>
+<body>
+<canvas id="campfire"></canvas>
+<script>
+    const canvas = document.getElementById('campfire');
+    const ctx = canvas.getContext('2d');
+    
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+    
+
+    const speed = 0.5;
+    
+
+    const colors = ['#ff0000', '#ff4500', '#ff6347', '#ff7f50', '#ff8c00'];
+    
+
+    const circles = [];
+    for (let i = 0; i < 100; i++) {
+        circles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * 50 + 1,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            speedX: (Math.random() - 0.5) * speed,
+            speedY: (Math.random() - 0.5) * speed
+        });
+    }
+
+    function drawCampfire() {
+
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, width, height);
+        
+   
+        circles.forEach(circle => {
+            circle.x += circle.speedX;
+            circle.y += circle.speedY;
+            
+          
+            if (circle.x < 0) circle.x = width;
+            if (circle.x > width) circle.x = 0;
+            if (circle.y < 0) circle.y = height;
+            if (circle.y > height) circle.y = 0;
+            
+    
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
+            ctx.fillStyle = circle.color;
+            ctx.fill();
+            ctx.closePath();
+        });
+        
+      
+        requestAnimationFrame(drawCampfire);
+    }
+    
+
+    drawCampfire();
+</script>
+</body>
+</html>
